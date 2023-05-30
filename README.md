@@ -1,2 +1,2 @@
 # ZAEBAL
-ZAEBAL's Asynchronous Extended Bard API Library
+ZAEBAL - ZAEBAL's Asynchronous Extended Bard API Library.
