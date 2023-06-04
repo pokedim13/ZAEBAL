@@ -2,6 +2,7 @@ import string
 import random
 import httpx
 
+from typing import Dict, Optional, Union
 from httpx._client import BaseClient
 
 class BaseBot:
@@ -31,12 +32,13 @@ class BaseBot:
         self.timeout = timeout
 
     def execute_api_method(self):
-        pass
+        raise NotImplementedError("execute_api_method is not implemented in the inheritor of the class")
+
+
+
 
 # Пример создания экземляра
 class AsyncBot(BaseBot):
     def __init__(self, session_id: str, proxy: dict = None, timeout: int = 20):
         self.client = httpx.AsyncClient()
         super().__init__(session_id, proxy, timeout)
-        
-        
