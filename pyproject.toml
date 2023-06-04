@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "zaebal"
+version = "0.1.0"
+description = "ZAEBAL's Asynchronous Extended Bard API Library."
+authors = ["pokedim13 <><skinxedovich@vk.com>"]
+license = "mit"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+httpx = "^0.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
