@@ -40,6 +40,3 @@ class AsyncBot(BaseBot):
         super().__init__(session_id, proxy, timeout)
         
         
-
-bot = AsyncBot("dfgdgdg")
-        
