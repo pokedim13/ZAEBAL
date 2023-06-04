@@ -2,14 +2,14 @@
 name = "zaebal"
 version = "0.1.0"
 description = "ZAEBAL's Asynchronous Extended Bard API Library."
-authors = ["pokedim13 <><skinxedovich@vk.com>"]
-license = "mit"
+authors = ["pokedim13 <><skinxedovich@vk.com>",
+            "Stepan Zubkov <stepanzubkov@florgon.com>"]
+license = "Apache 2.0"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 httpx = "^0.24.1"
-
 
 [build-system]
 requires = ["poetry-core"]

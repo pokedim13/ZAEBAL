@@ -59,9 +59,9 @@ class Bard:
             config.BARD_API_HOST, timeout=self.timeout, proxies=self.proxies,
         )
         response.raise_for_status()
-        SNlM0e = re.search(r"SNlM0e\":\"(.*)\"")
-        if not SNlM0e:
+        if SNlM0e := re.search(r"SNlM0e\":\"(.*)\""):
+            return SNlM0e[1]
+        else:
             raise ValueError(
                 "SNlM0e value not found in response! Check token value."
             )
-        return SNlM0e.group(1)
