@@ -42,3 +42,28 @@ class AsyncBot(BaseBot):
     def __init__(self, session_id: str, proxy: dict = None, timeout: int = 20):
         self.client = httpx.AsyncClient()
         super().__init__(session_id, proxy, timeout)
+
+
+
+class BaseBard:
+
+    client: BaseClient
+
+    def __init__(self,
+                token: str,
+                *,
+                timeout: int = 20,
+                proxies: Union[Dict[str, str], str, None] = None,
+                lang: str = "en",):
+        if not token or token[-1] != ".":
+            raise ValueError(
+                "Token value must end with a single dot!"
+            )
+        self.token = token
+        self.timeout = timeout
+        self.proxies = proxies
+        self.lang = lang
+
+    def execute_api_method(self):
+        raise NotImplementedError("execute_api_method is not implemented in the inheritor of the class")
+
