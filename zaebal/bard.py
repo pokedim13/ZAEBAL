@@ -98,7 +98,6 @@ class Bard(BaseBard):
         response = self.client.get(
             config.BARD_API_HOST,
             timeout=self.timeout,
-            proxies=self.proxies,
         )
         response.raise_for_status()
         if SNlM0e := re.search(r"SNlM0e\":\"(.*)\""):
@@ -128,7 +127,6 @@ class Bard(BaseBard):
             data=data,
             params=params,
             timeout=self.timeout,
-            proxies=self.proxies,
         )
 
 

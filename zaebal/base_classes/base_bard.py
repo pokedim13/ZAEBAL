@@ -30,8 +30,8 @@ class BaseBard:
             raise ValueError("Token value must end with a single dot!")
         self.token = token
         self.timeout = timeout
-        self.proxies = proxies
         self.lang = lang
+        self.client.proxies = proxies
         self.client.cookies.set("__Secure-1PSID", token)
         self.client.headers = {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
