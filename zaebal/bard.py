@@ -36,7 +36,7 @@ class Bard(BaseBard):
         :raises: ValueError if token is invalid.
         """
         self.client = httpx.Client()
-        super(self).__init__(token=token, timeout=timeout, proxies=proxies, lang=lang)
+        super().__init__(token=token, timeout=timeout, proxies=proxies, lang=lang)
 
     def ask(self, prompt: str) -> Union[BardAnswer, BardError]:
         """
