@@ -6,6 +6,17 @@ from dataclasses import dataclass
 
 
 @dataclass
+class BardAnswerChoice:
+    """
+    Provides choices from BardAnswer.
+    :param int id: ID of choice
+    :param str content: Content of choice
+    """
+    id: int
+    content: str
+
+
+@dataclass
 class BardAnswer:
     """
     Provides Bard answer data.
@@ -18,14 +29,3 @@ class BardAnswer:
     textQuery: str
     choices: List[BardAnswerChoice]
     images: set
-
-
-@dataclass
-class BardAnswerChoice:
-    """
-    Provides choices from BardAnswer.
-    :param int id: ID of choice
-    :param str content: Content of choice
-    """
-    id: int
-    content: str
