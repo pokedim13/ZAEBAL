@@ -1,6 +1,7 @@
 """
     Abstract BaseBard class for Bard and AsyncBard classes.
 """
+import random
 from typing import Dict, Union
 from httpx._client import BaseClient
 
@@ -43,6 +44,7 @@ class BaseBard:
         self.choice_id = ""
         self.conversation_id = ""
         self.response_id = ""
+        self._reqid = random.randint(0, 9999)
 
     def ask(self, *args, **kwargs):
         raise NotImplementedError(
@@ -57,4 +59,11 @@ class BaseBard:
     def _get_snlm0e(self, *args, **kwargs):
         raise NotImplementedError(
             "_get_snlm0e() is not implemented in the derived class."
+        )
+
+    @staticmethod
+    def _extract_images_from_chat_data(*args, **kwargs):
+        raise NotImplementedError(
+            "Static method _extract_images_from_chat_data() is not "
+            "implemented in the derived class."
         )
