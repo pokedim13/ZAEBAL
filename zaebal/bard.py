@@ -2,13 +2,13 @@
     Main file that contains Bard class that synchoronously interacts with Google Bard API.
 """
 
-from typing import Dict, Optional, Union
+from typing import Dict, Optional, Union, Any
 import re
 
 import httpx
 
 from zaebal import config
-from zaebal.base_models.base_bard import BaseBard
+from zaebal.base_classes.base_bard import BaseBard
 
 
 class Bard(BaseBard):
@@ -36,14 +36,39 @@ class Bard(BaseBard):
         self.client = httpx.Client()
         super(self).__init__(token=token, timeout=timeout, proxies=proxies, lang=lang)
 
+
+    def ask(self, prompt: str) -> BardAnswer:
+        ...
+
     def _get_snlm0e(self) -> str:
+        """
+        Requests Bard for SNlM0e identificator and returns it.
+        :return: SNlM0e identificator
+        :rtype: str
+        """
         response = self.client.get(
-            config.BARD_API_HOST, timeout=self.timeout, proxies=self.proxies,
+            config.BARD_API_HOST,
+            timeout=self.timeout,
+            proxies=self.proxies,
         )
         response.raise_for_status()
         if SNlM0e := re.search(r"SNlM0e\":\"(.*)\""):
             return SNlM0e[1]
         else:
-            raise ValueError(
-                "SNlM0e value not found in response! Check token value."
-            )
+            raise ValueError("SNlM0e value not found in response! Check token value.")
+
+    def _execute_api_method(
+        self,
+        method: str,
+        endpoint: str,
+        data: Optional[Dict[str, Any]] = None,
+        params: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        return self.client.request(
+            method,
+            config.BARD_API_HOST + endpoint,
+            data=data,
+            params=params,
+            timeout=self.timeout,
+            proxies=self.proxies,
+        )

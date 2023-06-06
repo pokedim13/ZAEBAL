@@ -40,10 +40,18 @@ class BaseBard:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
             "X-Same-Domain": "1",
         }
+        self.choice_id = ""
+        self.conversation_id = ""
+        self.response_id = ""
 
-    def execute_api_method(self, *args, **kwargs):
+    def ask(self, *args, **kwargs):
         raise NotImplementedError(
-            "execute_api_method() is not implemented in the derived class."
+            "ask() method is not implemented in derived class."
+        )
+
+    def _execute_api_method(self, *args, **kwargs):
+        raise NotImplementedError(
+            "_execute_api_method() is not implemented in the derived class."
         )
 
     def _get_snlm0e(self, *args, **kwargs):
