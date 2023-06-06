@@ -55,7 +55,7 @@ class Bard(BaseBard):
             None,
             [self.conversation_id, self.response_id, self.choice_id],
         ]
-        if not self.SNlM0e:
+        if not getattr(self, "SNlM0e", None):
             self.SNlM0e = self._get_snlm0e()
         data = {
             "f.req": json.dumps([None, json.dumps(prompt_struct)]),
