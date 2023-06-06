@@ -101,7 +101,7 @@ class Bard(BaseBard):
             follow_redirects=True,
         )
         response.raise_for_status()
-        if SNlM0e := re.search(r"SNlM0e\":\"(.*)\""):
+        if SNlM0e := re.search(r"SNlM0e\":\"(.*)\"", response.content):
             return SNlM0e[1]
         else:
             raise ValueError("SNlM0e value not found in response! Check token value.")
