@@ -46,7 +46,7 @@ class Bard(BaseBard):
         :rtype: Union[BardAnswer, BardError]
         """
         params = {
-            "bl": "boq_assistant-bard-web-server_20230530.14_p0",
+            "bl": "boq_assistant-bard-web-server_20230419.00_p1",
             "_reqid": str(self._reqid),
             "rt": "c",
         }
@@ -83,7 +83,7 @@ class Bard(BaseBard):
         )
         self.conversation_id = answer.conversation_id
         self.response_id = answer.response_id
-        self.choice_id = self.choices[0].id
+        self.choice_id = answer.choices[0].id
         self._reqid += 1000
         return answer
 
@@ -125,8 +125,8 @@ class Bard(BaseBard):
         return self.client.request(
             method,
             config.BARD_API_HOST + endpoint,
-            data=data,
             params=params,
+            data=data,
             timeout=self.timeout,
         )
 
