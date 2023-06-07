@@ -32,7 +32,6 @@ class BaseBard:
         self.timeout = timeout
         self.lang = lang
         self.client.proxies = proxies
-        self.client.cookies.set("__Secure-1PSID", token)
         self.client.headers = {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             "Host": "bard.google.com",
@@ -41,6 +40,7 @@ class BaseBard:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
             "X-Same-Domain": "1",
         }
+        self.client.cookies.set("__Secure-1PSID", token)
         self.choice_id = ""
         self.conversation_id = ""
         self.response_id = ""
