@@ -122,7 +122,8 @@ class Bard(BaseBard):
         :return: API response
         :rtype: httpx.Response
         """
-        return self.client.post(
+        return self.client.request(
+            method,
             config.BARD_API_HOST + endpoint,
             params=params,
             data=data,
